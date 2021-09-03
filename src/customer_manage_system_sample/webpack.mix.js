@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-
+const mix = require("laravel-mix");
+const path = require("path");
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,7 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            "@": path.resolve("./resources/js")
+        }
+    }
+});
+mix.js("resources/js/app.js", "public/js")
+    .js("resources/js/router.js", "public/js")
+    .vue()
+    .postCss("resources/css/app.css", "public/css", [])
+;
