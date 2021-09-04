@@ -5,5 +5,8 @@ export default {
     },
 
     methods: {
+        clickCustomerCreate() {
+            this.$router.push("/customerCreate");
+        }
     }
 };

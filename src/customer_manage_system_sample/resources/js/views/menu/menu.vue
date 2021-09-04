@@ -8,6 +8,13 @@
 
                 <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
+            <v-list-item @click="clickCustomerCreate">
+                <v-list-item-icon>
+                    <v-icon>mdi-home</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-title>顧客登録</v-list-item-title>
+            </v-list-item>
         </v-list>
     </v-card>
 </template>

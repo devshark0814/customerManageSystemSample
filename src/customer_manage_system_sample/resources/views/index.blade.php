@@ -7,6 +7,7 @@
     <title>顧客管理システムサンプル</title>
     <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://yubinbango.github.io/yubinbango-core/yubinbango-core.js" charset="UTF-8"></script>
 </head>
 
 <body>
