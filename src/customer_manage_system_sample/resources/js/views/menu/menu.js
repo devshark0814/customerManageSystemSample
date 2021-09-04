@@ -7,6 +7,9 @@ export default {
     methods: {
         clickCustomerCreate() {
             this.$router.push("/customerCreate");
+        },
+        clickCustomerIndex() {
+            this.$router.push("/customerList");
         }
     }
 };

@@ -1,3 +1,4 @@
+import { $WebAPI } from "@/commonjs/WebAPI";
 export default {
     data() {
         return {
@@ -40,7 +41,7 @@ export default {
         save(birthday) {
             this.$refs.menu.save(birthday);
         },
-        clickSend() {
+        clickSend: async function() {
             let param = {
                 customer_name : this.customer_name,
                 customer_name_kana : this.customer_name_kana,
@@ -55,6 +56,8 @@ export default {
                 status : 1,
             }
             console.log(param);
+            const res = await $WebAPI.postAxios("/api/customer_store",param);
+
         }
     }
 };

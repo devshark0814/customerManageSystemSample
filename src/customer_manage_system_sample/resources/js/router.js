@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import Dashboard from "./views/dashboard/dashboard.vue";
 import CustomerCreate from "./views/customerCreate/customerCreate.vue";
+import CustomerList from "./views/customerList/customerList.vue";
 
 
 const router = new VueRouter({
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: "/customerCreate",
             name: "CustomerCreate",
             component: CustomerCreate,
+        },
+        {
+            path: "/customerList",
+            name: "CustomerList",
+            component: CustomerList,
         },
     ]
 });

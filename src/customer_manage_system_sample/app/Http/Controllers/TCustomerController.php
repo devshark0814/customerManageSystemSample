@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TCustomer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TCustomerController extends Controller
 {
@@ -15,6 +16,11 @@ class TCustomerController extends Controller
     public function index()
     {
         //
+        $datas = TCustomer::all();
+        return response()->json([
+            'message' => '検索完了しました',
+            'data' => $datas
+        ]);
     }
 
     /**
@@ -36,6 +42,12 @@ class TCustomerController extends Controller
     public function store(Request $request)
     {
         //
+        Log::info($request);
+
+        TCustomer::create($request->all());
+        return response()->json([
+            'message' => '登録完了しました'
+        ]);
     }
 
     /**
