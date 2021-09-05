@@ -19,7 +19,7 @@
                 @click:row="clickRow"
             ></v-data-table>
         </v-card>
-        <v-dialog v-model="dialog" max-width="600px" eager>
+        <v-dialog v-model="dialog" max-width="800px" eager>
             <v-card>
                 <v-card-title>
                     <span class="text-h5">User Profile</span>

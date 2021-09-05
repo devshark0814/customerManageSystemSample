@@ -1,24 +1,40 @@
 <template>
     <v-form>
         <v-container>
-            <v-row>
-                <v-col>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_color"><span class="item_label">氏名</span></v-col>
+                <v-col cols="8">
                     <v-text-field
                         label="氏名"
                         v-model="customer_name"
+                        outlined
+                        clearable
+                        dense
+                        :rules="[rules.required]"
                     ></v-text-field>
                 </v-col>
+                <v-spacer />
             </v-row>
-            <v-row>
-                <v-col>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_color"><span class="item_label">氏名かな</span></v-col>
+                <v-col cols="8">
                     <v-text-field
                         label="氏名_カナ"
                         v-model="customer_name_kana"
+                        outlined
+                        clearable
+                        dense
+                        :rules="[rules.required]"
                     ></v-text-field>
                 </v-col>
+                <v-spacer />
             </v-row>
-            <v-row>
-                <v-col>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_cols item_color"><span class="item_labels">性別</span></v-col>
+                <v-col cols="8">
                     <v-checkbox
                         v-model="sex"
                         label="男性"
@@ -34,9 +50,12 @@
                         hide-details
                     ></v-checkbox>
                 </v-col>
+                <v-spacer />
             </v-row>
-            <v-row>
-                <v-col>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_color"><span class="item_label">生年月日</span></v-col>
+                <v-col cols="8">
                     <v-menu
                         ref="menu"
                         v-model="menu"
@@ -53,6 +72,10 @@
                                 readonly
                                 v-bind="attrs"
                                 v-on="on"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
                             ></v-text-field>
                         </template>
                         <v-date-picker
@@ -72,54 +95,93 @@
                         ></v-date-picker>
                     </v-menu>
                 </v-col>
+                <v-spacer />
             </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="電話番号(家)"
-                        v-model="tel_home"
-                    ></v-text-field>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_cols item_color"><span class="item_labels">連絡先</span></v-col>
+                <v-col cols="8">
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="電話番号(家)"
+                                v-model="tel_home"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="電話番号(携帯)"
+                                v-model="tel_celler"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="メールアドレス"
+                                v-model="e_mail"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required, rules.mail_regex]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
                 </v-col>
+                <v-spacer />
             </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="電話番号(携帯)"
-                        v-model="tel_celler"
-                    ></v-text-field>
+            <v-row dense>
+                <v-spacer />
+                <v-col cols="2" class="item_cols item_color"><span class="item_labels">お住まい</span></v-col>
+                <v-col cols="8">
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="郵便番号"
+                                v-model="post_code"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="住所"
+                                v-model="address"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                    <v-row dense>
+                        <v-col>
+                            <v-text-field
+                                label="住所_カナ"
+                                v-model="address_kana"
+                                outlined
+                                clearable
+                                dense
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
                 </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="メールアドレス"
-                        v-model="e_mail"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="郵便番号"
-                        v-model="post_code"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="住所"
-                        v-model="address"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <v-text-field
-                        label="住所_カナ"
-                        v-model="address_kana"
-                    ></v-text-field>
-                </v-col>
+                <v-spacer />
             </v-row>
         </v-container>
     </v-form>
@@ -146,6 +208,13 @@ export default {
             post_code: "",
             e_mail: "",
             address_kana: "",
+            //-----------------------
+            // バリデーション
+            valid: false,
+            rules : {
+                required: v => !!v || '必須項目です',
+                mail_regex: v => /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'メールアドレスのフォーマットが間違っています',
+            }
             //-----------------------
         };
     },
@@ -214,3 +283,34 @@ export default {
 };
 
 </script>
+<style>
+.item_cols {
+    display: table;
+    width: 100%;
+}
+
+.item_labels {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    color:white;
+    padding-right: 15px;
+}
+
+.item_label {
+    height: 100%;
+    width: 100%;
+    display: block;
+    text-align: right;
+    color: white;
+    padding-top: 9px;
+    padding-right: 15px;
+}
+
+.item_color {
+    background-color: #5fa3c3;
+    border-bottom: solid 2px white;
+}
+</style>
