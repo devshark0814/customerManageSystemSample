@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div style="padding:1% 5%">
         <v-card>
             <v-card-title>
                 <v-text-field
                     v-model="search"
                     append-icon="mdi-magnify"
-                    label="Search"
+                    label="検索"
                     single-line
                     hide-details
                 ></v-text-field>
@@ -22,18 +22,18 @@
         <v-dialog v-model="dialog" max-width="800px" eager>
             <v-card>
                 <v-card-title>
-                    <span class="text-h5">User Profile</span>
+                    <span class="text-h5" style="width: 100%;text-align: center;">顧客情報</span>
                 </v-card-title>
                 <v-card-text>
                     <customerDefaultInfo ref="customerDefaultInfo" @getDatas="getDatas" />
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="dialog = false">
-                        Close
+                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="dialog = false">
+                        閉じる
                     </v-btn>
-                    <v-btn color="blue darken-1" text @click="dialog = false">
-                        Save
+                    <v-btn style="width:20%" class="white--text" color="primary" @click="dialog = false">
+                        保存
                     </v-btn>
                 </v-card-actions>
             </v-card>

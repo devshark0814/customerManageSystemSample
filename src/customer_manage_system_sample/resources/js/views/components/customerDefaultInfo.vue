@@ -11,6 +11,7 @@
                         outlined
                         clearable
                         dense
+                        counter="50"
                         :rules="[rules.required]"
                     ></v-text-field>
                 </v-col>
@@ -26,6 +27,7 @@
                         outlined
                         clearable
                         dense
+                        counter="100"
                         :rules="[rules.required]"
                     ></v-text-field>
                 </v-col>
@@ -109,7 +111,8 @@
                                 outlined
                                 clearable
                                 dense
-                                :rules="[rules.required]"
+                                counter="10"
+                                :rules="[rules.required, rules.lenght_10]"
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -121,7 +124,8 @@
                                 outlined
                                 clearable
                                 dense
-                                :rules="[rules.required]"
+                                counter="11"
+                                :rules="[rules.required, rules.lenght_11]"
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -152,7 +156,8 @@
                                 outlined
                                 clearable
                                 dense
-                                :rules="[rules.required]"
+                                counter="7"
+                                :rules="[rules.required, rules.lenght_7]"
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -214,6 +219,9 @@ export default {
             rules : {
                 required: v => !!v || '必須項目です',
                 mail_regex: v => /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'メールアドレスのフォーマットが間違っています',
+                lenght_10: v => String(v.length) <=10 || '10桁以内のハイフン無しで入力してください',
+                lenght_11: v => String(v.length) <=11 || '11桁以内のハイフン無しで入力してください',
+                lenght_7: v => String(v.length) <=7 || '7桁以内のハイフン無しで入力してください',
             }
             //-----------------------
         };
