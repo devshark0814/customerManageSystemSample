@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Const\MessageConst;
 
 class TCustomerController extends Controller
 {
@@ -16,7 +17,7 @@ class TCustomerController extends Controller
     public function index()
     {
         $datas = TCustomer::all();
-        return $this->setResponse('検索完了しました', $datas);
+        return $this->setResponse(MessageConst::MESSAGE_ID_00001, $datas);
     }
 
     /**
@@ -29,7 +30,7 @@ class TCustomerController extends Controller
     {
         TCustomer::create($request->all());
         return response()->json([
-            'message' => '登録完了しました'
+            'message' => MessageConst::MESSAGE_ID_00002
         ]);
     }
 
@@ -45,9 +46,9 @@ class TCustomerController extends Controller
         $data = TCustomer::find($request->id);
         $result = $data->fill($request->all())->save();
         if(!$result) {
-            return $this->setResponse('更新に失敗しました');
+            return $this->setResponse(MessageConst::MESSAGE_ID_00005);
         }
-        return $this->setResponse('更新しました');
+        return $this->setResponse(MessageConst::MESSAGE_ID_00004);
     }
 
     /**
@@ -61,8 +62,8 @@ class TCustomerController extends Controller
         $data = TCustomer::find($request->id);
         $result = $data->delete();
         if(!$result) {
-            return $this->setResponse('削除に失敗しました');
+            return $this->setResponse(MessageConst::MESSAGE_ID_00007);
         }
-        return $this->setResponse('削除しました');
+        return $this->setResponse(MessageConst::MESSAGE_ID_00006);
     }
 }
