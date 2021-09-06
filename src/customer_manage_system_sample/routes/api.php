@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/customer_index',[App\Http\Controllers\TCustomerController::class, 'index']);
 Route::post('/customer_store',[App\Http\Controllers\TCustomerController::class, 'store']);
+Route::post('/customer_update',[App\Http\Controllers\TCustomerController::class, 'update']);
+Route::post('/customer_destroy',[App\Http\Controllers\TCustomerController::class, 'destroy']);

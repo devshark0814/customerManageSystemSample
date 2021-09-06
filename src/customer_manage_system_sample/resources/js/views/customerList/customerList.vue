@@ -29,11 +29,14 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="dialog = false">
+                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="dialog = false" :disabled="deleting || updating">
                         閉じる
                     </v-btn>
-                    <v-btn style="width:20%" class="white--text" color="primary" @click="dialog = false">
+                    <v-btn style="width:20%" class="white--text" color="primary" @click="clickSave" :loading="updating" :disabled="deleting">
                         保存
+                    </v-btn>
+                    <v-btn style="width:20%" class="white--text" color="pink lighten-1" @click="clickDelete" :loading="deleting" :disabled="updating">
+                        削除
                     </v-btn>
                 </v-card-actions>
             </v-card>

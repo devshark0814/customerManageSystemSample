@@ -204,6 +204,7 @@ export default {
             address: "",
             //-----------------------
             // model-----------------
+            id:0,
             customer_name: "",
             customer_name_kana: "",
             sex: "",
@@ -246,6 +247,7 @@ export default {
         },
         getDatas() {
             let param = {
+                id : this.id,
                 customer_name : this.customer_name,
                 customer_name_kana : this.customer_name_kana,
                 sex: this.sex,
@@ -262,6 +264,7 @@ export default {
         },
         setDatas(objs) {
             this.clearDatas();
+            this.id                 = objs.id;
             this.customer_name      = objs.customer_name;
             this.customer_name_kana = objs.customer_name_kana;
             this.sex                = objs.sex;
@@ -275,6 +278,7 @@ export default {
             this.status             = objs.status;
         },
         clearDatas() {
+            this.id                 = 0;
             this.customer_name      = "";
             this.customer_name_kana = "";
             this.sex                = "";

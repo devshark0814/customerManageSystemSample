@@ -15,22 +15,8 @@ class TCustomerController extends Controller
      */
     public function index()
     {
-        //
         $datas = TCustomer::all();
-        return response()->json([
-            'message' => '検索完了しました',
-            'data' => $datas
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->setResponse('検索完了しました', $datas);
     }
 
     /**
@@ -41,35 +27,10 @@ class TCustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        Log::info($request);
-
         TCustomer::create($request->all());
         return response()->json([
             'message' => '登録完了しました'
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TCustomer  $tCustomer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TCustomer $tCustomer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TCustomer  $tCustomer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TCustomer $tCustomer)
-    {
-        //
     }
 
     /**
@@ -81,17 +42,27 @@ class TCustomerController extends Controller
      */
     public function update(Request $request, TCustomer $tCustomer)
     {
-        //
+        $data = TCustomer::find($request->id);
+        $result = $data->fill($request->all())->save();
+        if(!$result) {
+            return $this->setResponse('更新に失敗しました');
+        }
+        return $this->setResponse('更新しました');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TCustomer  $tCustomer
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TCustomer $tCustomer)
+    public function destroy(Request $request)
     {
-        //
+        $data = TCustomer::find($request->id);
+        $result = $data->delete();
+        if(!$result) {
+            return $this->setResponse('削除に失敗しました');
+        }
+        return $this->setResponse('削除しました');
     }
 }

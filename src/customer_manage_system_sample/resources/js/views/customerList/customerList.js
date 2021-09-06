@@ -16,6 +16,11 @@ export default {
             ],
             desserts:[],
             dialog: false,
+            updateObj: {},
+            // ダイアログボタン制御-------
+            updating: false,
+            deleting: false,
+            //---------------------------
         };
     },
     created() {
@@ -27,6 +32,7 @@ export default {
         },
         searchList: async function() {
             this.loading = true;
+            this.updateObj = {};
             const res = await $WebAPI.postAxios("/api/customer_index",{});
             console.log(res);
             this.desserts = res.data.data;
@@ -34,14 +40,31 @@ export default {
         },
         clickRow(row) {
             this.dialog = true;
+            this.updateObj = {};
             this.setDatas(row);
         },
-        getDatas() {
-
+        getDatas(obj) {
+            this.updateObj = obj;
         },
         // 子コンポーネントにデータ引継ぎ
         setDatas(row) {
             this.$refs.customerDefaultInfo.setDatas(row);
         },
+        clickSave: async function() {
+            this.updating = true;
+            this.$refs.customerDefaultInfo.getDatas();
+            const res = await $WebAPI.postAxios("/api/customer_update", this.updateObj);
+            this.updating = false;
+            this.dialog = false;
+            this.searchList();
+        },
+        clickDelete: async function() {
+            this.deleting = true;
+            this.$refs.customerDefaultInfo.getDatas();
+            const res = await $WebAPI.postAxios("/api/customer_destroy", this.updateObj);
+            this.deleting = false;
+            this.dialog = false;
+            this.searchList();
+        }
     }
 };
