@@ -10,9 +10,9 @@ export default {
             loading: false,
             search: '',
             headers:[
-                {text: '顧客ID', value: 'id'},
-                {text: '顧客名', value: 'customer_name'},
-                {text: '顧客名かな', value: 'customer_name_kana'},
+                {text: '顧客ID', value: 'id', class: 'data_table_header'},
+                {text: '顧客名', value: 'customer_name', class: 'data_table_header'},
+                {text: '顧客名かな', value: 'customer_name_kana', class: 'data_table_header'},
             ],
             desserts:[],
             dialog: false,

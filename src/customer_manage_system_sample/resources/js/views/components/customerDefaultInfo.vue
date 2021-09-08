@@ -1,112 +1,115 @@
 <template>
     <v-form>
-        <v-container>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_color"><span class="item_label">氏名</span></v-col>
-                <v-col cols="8">
-                    <v-text-field
-                        label="氏名"
-                        v-model="customer_name"
-                        outlined
-                        clearable
-                        dense
-                        counter="50"
-                        :rules="[rules.required]"
-                    ></v-text-field>
-                </v-col>
-                <v-spacer />
-            </v-row>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_color"><span class="item_label">氏名かな</span></v-col>
-                <v-col cols="8">
-                    <v-text-field
-                        label="氏名_カナ"
-                        v-model="customer_name_kana"
-                        outlined
-                        clearable
-                        dense
-                        counter="100"
-                        :rules="[rules.required]"
-                    ></v-text-field>
-                </v-col>
-                <v-spacer />
-            </v-row>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_cols item_color"><span class="item_labels">性別</span></v-col>
-                <v-col cols="8">
-                    <v-checkbox
-                        v-model="sex"
-                        label="男性"
-                        color="red"
-                        value="1"
-                        hide-details
-                    ></v-checkbox>
-                    <v-checkbox
-                        v-model="sex"
-                        label="女性"
-                        color="red"
-                        value="2"
-                        hide-details
-                    ></v-checkbox>
-                </v-col>
-                <v-spacer />
-            </v-row>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_color"><span class="item_label">生年月日</span></v-col>
-                <v-col cols="8">
-                    <v-menu
-                        ref="menu"
-                        v-model="menu"
-                        :close-on-content-click="false"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="auto"
-                    >
-                        <template v-slot:activator="{ on, attrs }">
+        <v-simple-table>
+            <template v-slot:default>
+                <tbody>
+                    <tr>
+                        <th class="table_header">
+                            氏名
+                        </th>
+                        <td>
                             <v-text-field
-                                v-model="birthday"
-                                label="生年月日"
-                                prepend-icon="mdi-calendar"
-                                readonly
-                                v-bind="attrs"
-                                v-on="on"
+                                class="table_object"
+                                v-model="customer_name"
                                 outlined
                                 clearable
                                 dense
+                                counter="50"
                                 :rules="[rules.required]"
                             ></v-text-field>
-                        </template>
-                        <v-date-picker
-                            v-model="birthday"
-                            :active-picker.sync="activePicker"
-                            :max="
-                                new Date(
-                                    Date.now() -
-                                        new Date().getTimezoneOffset() *
-                                            60000
-                                )
-                                    .toISOString()
-                                    .substr(0, 10)
-                            "
-                            min="1950-01-01"
-                            @change="save"
-                        ></v-date-picker>
-                    </v-menu>
-                </v-col>
-                <v-spacer />
-            </v-row>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_cols item_color"><span class="item_labels">連絡先</span></v-col>
-                <v-col cols="8">
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            氏名かな
+                        </th>
+                        <td>
                             <v-text-field
-                                label="電話番号(家)"
+                                class="table_object"
+                                v-model="customer_name_kana"
+                                outlined
+                                clearable
+                                dense
+                                counter="100"
+                                :rules="[rules.required]"
+                            ></v-text-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            性別
+                        </th>
+                        <td>
+                            <v-checkbox
+                                class="pa-0 ma-0"
+                                v-model="sex"
+                                label="男性"
+                                color="red"
+                                value="1"
+                                hide-details
+                            ></v-checkbox>
+                            <v-checkbox
+                                class="pa-0 ma-0"
+                                v-model="sex"
+                                label="女性"
+                                color="red"
+                                value="2"
+                                hide-details
+                            ></v-checkbox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            生年月日
+                        </th>
+                        <td>
+                            <v-menu
+                                ref="menu"
+                                v-model="menu"
+                                :close-on-content-click="false"
+                                transition="scale-transition"
+                                offset-y
+                                min-width="auto"
+                            >
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field
+                                        class="table_object"
+                                        v-model="birthday"
+                                        prepend-icon="mdi-calendar"
+                                        readonly
+                                        v-bind="attrs"
+                                        v-on="on"
+                                        outlined
+                                        clearable
+                                        dense
+                                        :rules="[rules.required]"
+                                    ></v-text-field>
+                                </template>
+                                <v-date-picker
+                                    v-model="birthday"
+                                    :active-picker.sync="activePicker"
+                                    :max="
+                                        new Date(
+                                            Date.now() -
+                                                new Date().getTimezoneOffset() *
+                                                    60000
+                                        )
+                                            .toISOString()
+                                            .substr(0, 10)
+                                    "
+                                    min="1950-01-01"
+                                    @change="save"
+                                ></v-date-picker>
+                            </v-menu>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            電話番号(home)
+                        </th>
+                        <td>
+                            <v-text-field
+                                class="table_object"
                                 v-model="tel_home"
                                 outlined
                                 clearable
@@ -114,12 +117,15 @@
                                 counter="10"
                                 :rules="[rules.required, rules.lenght_10]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            電話番号(celler)
+                        </th>
+                        <td>
                             <v-text-field
-                                label="電話番号(携帯)"
+                                class="table_object"
                                 v-model="tel_celler"
                                 outlined
                                 clearable
@@ -127,31 +133,30 @@
                                 counter="11"
                                 :rules="[rules.required, rules.lenght_11]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            メールアドレス
+                        </th>
+                        <td>
                             <v-text-field
-                                label="メールアドレス"
+                                class="table_object"
                                 v-model="e_mail"
                                 outlined
                                 clearable
                                 dense
                                 :rules="[rules.required, rules.mail_regex]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                </v-col>
-                <v-spacer />
-            </v-row>
-            <v-row dense>
-                <v-spacer />
-                <v-col cols="2" class="item_cols item_color"><span class="item_labels">お住まい</span></v-col>
-                <v-col cols="8">
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            郵便番号
+                        </th>
+                        <td>
                             <v-text-field
-                                label="郵便番号"
+                                class="table_object"
                                 v-model="post_code"
                                 outlined
                                 clearable
@@ -159,36 +164,41 @@
                                 counter="7"
                                 :rules="[rules.required, rules.lenght_7]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            住所
+                        </th>
+                        <td>
                             <v-text-field
-                                label="住所"
+                                class="table_object"
                                 v-model="address"
                                 outlined
                                 clearable
                                 dense
                                 :rules="[rules.required]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row dense>
-                        <v-col>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table_header">
+                            住所かな
+                        </th>
+                        <td>
                             <v-text-field
-                                label="住所_カナ"
+                                class="table_object"
                                 v-model="address_kana"
                                 outlined
                                 clearable
                                 dense
                                 :rules="[rules.required]"
                             ></v-text-field>
-                        </v-col>
-                    </v-row>
-                </v-col>
-                <v-spacer />
-            </v-row>
-        </v-container>
+                        </td>
+                    </tr>
+                </tbody>
+            </template>
+        </v-simple-table>
     </v-form>
 </template>
 <script>
@@ -296,33 +306,17 @@ export default {
 
 </script>
 <style>
-.item_cols {
-    display: table;
-    width: 100%;
-}
-
-.item_labels {
-    height: 100%;
-    width: 100%;
-    display: table-cell;
+.table_header {
+    height: 80px !important;
+    width: 300px;
     vertical-align: middle;
-    text-align: right;
-    color:white;
-    padding-right: 15px;
+    color: #24a974;
+    font-size: 14px !important;
+    letter-spacing: 0.1em;
+    background-color: #f3fcf8;
+    border-bottom: 1px solid #20bd7e !important;
 }
-
-.item_label {
-    height: 100%;
-    width: 100%;
-    display: block;
-    text-align: right;
-    color: white;
-    padding-top: 9px;
-    padding-right: 15px;
-}
-
-.item_color {
-    background-color: #5fa3c3;
-    border-bottom: solid 2px white;
+.table_object {
+    margin-top: 2% !important;
 }
 </style>
