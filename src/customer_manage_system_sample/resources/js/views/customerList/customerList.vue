@@ -20,6 +20,9 @@
                 @click:row="clickRow"
             ></v-data-table>
         </v-card>
+        <v-snackbar :value="snack" absolute top right timeout=5000 color="success">
+            {{ snackMessage }}
+        </v-snackbar>
         <v-dialog v-model="dialog" max-width="800px" eager persistent>
             <v-card>
                 <v-card-title>

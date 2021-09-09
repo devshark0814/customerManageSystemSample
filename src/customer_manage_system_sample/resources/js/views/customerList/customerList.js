@@ -21,6 +21,8 @@ export default {
             updating: false,
             deleting: false,
             //---------------------------
+            snack: false,
+            snackMessage: "",
         };
     },
     created() {
@@ -54,6 +56,8 @@ export default {
             this.updating = true;
             this.$refs.customerDefaultInfo.getDatas();
             const res = await $WebAPI.postAxios("/api/customer_update", this.updateObj);
+            this.snack = true;
+            this.snackMessage = res.data.message;
             this.updating = false;
             this.dialog = false;
             this.searchList();
@@ -62,6 +66,8 @@ export default {
             this.deleting = true;
             this.$refs.customerDefaultInfo.getDatas();
             const res = await $WebAPI.postAxios("/api/customer_destroy", this.updateObj);
+            this.snack = true;
+            this.snackMessage = res.message;
             this.deleting = false;
             this.dialog = false;
             this.searchList();
