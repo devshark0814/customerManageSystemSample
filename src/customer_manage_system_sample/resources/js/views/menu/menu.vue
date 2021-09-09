@@ -22,6 +22,13 @@
 
                 <v-list-item-title>顧客一覧</v-list-item-title>
             </v-list-item>
+            <v-list-item @click="clickCustomerKanban">
+                <v-list-item-icon>
+                    <v-icon>mdi-view-list</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-title>顧客かんばん</v-list-item-title>
+            </v-list-item>
         </v-list>
     </v-card>
 </template>

@@ -10,6 +10,9 @@ export default {
         },
         clickCustomerIndex() {
             this.$router.push("/customerList");
+        },
+        clickCustomerKanban() {
+            this.$router.push("/customerKanban");
         }
     }
 };
