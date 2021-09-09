@@ -1,7 +1,7 @@
 <template>
     <v-card class="mx-auto navimenu" width="300" height="100%">
         <v-list>
-            <v-list-item>
+            <v-list-item @click="clickHome">
                 <v-list-item-icon>
                     <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>

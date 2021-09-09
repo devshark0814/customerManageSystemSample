@@ -5,6 +5,10 @@ export default {
     },
 
     methods: {
+        // TODO メニューをループで
+        clickHome() {
+            this.$router.push("/dashboard");
+        },
         clickCustomerCreate() {
             this.$router.push("/customerCreate");
         },

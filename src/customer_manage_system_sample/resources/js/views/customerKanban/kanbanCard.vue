@@ -1,9 +1,11 @@
 <template>
     <div>
         <v-card class="task_card_header" v-bind:class="card_class" @click="clickCard">
+            <!-- TODO 内容の更新 -->
+            <!-- TODO 担当者の追加 -->
             <v-card-text>
-                <div class="task_title">タイトル: {{ card_title }}</div>
-                <div class="task_body">本文: {{ card_body }}</div>
+                <div class="task_title">顧客名: {{ card_title }}</div>
+                <div class="task_body">住所: {{ card_body }}</div>
                 <div>
                     <v-progress-linear
                         v-model="card_progress"
@@ -14,6 +16,7 @@
                 </div>
             </v-card-text>
         </v-card>
+        <!-- TODO 内容の更新 -->
         <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card>
                 <v-card-title>

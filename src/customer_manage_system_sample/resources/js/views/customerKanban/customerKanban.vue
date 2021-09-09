@@ -17,10 +17,10 @@
                             <template v-for="(item, j) in kanban.items">
                                 <kanbancard
                                     :key="j"
-                                    :card_type="item.type"
-                                    :card_title="item.title"
-                                    :card_body="item.body"
-                                    :card_progress="item.progress"
+                                    :card_type="item.status"
+                                    :card_title="item.customer_name"
+                                    :card_body="item.address"
+                                    :card_progress="0"
                                 />
                             </template>
                         </draggable>
@@ -28,7 +28,8 @@
                 </v-card>
             </v-col>
         </v-row>
-        <v-btn
+        <!-- 追加は顧客登録画面でできるためコメントアウト -->
+        <!-- <v-btn
             fab
             color="#79fd69"
             top
@@ -83,7 +84,7 @@
                     </v-btn>
                 </v-card-actions>
             </v-card>
-        </v-dialog>
+        </v-dialog> -->
     </v-container>
 </template>
 <script src="./customerKanban.js"></script>

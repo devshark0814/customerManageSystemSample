@@ -1,3 +1,4 @@
+import { $WebAPI } from "@/commonjs/WebAPI";
 import draggable from "vuedraggable";
 import kanbancard from "@/views/customerKanban/kanbanCard.vue";
 
@@ -8,35 +9,7 @@ export default {
     },
     data() {
         return {
-            kanbans: [
-                {
-                    kanban_type: 1,
-                    kanban_name: "タスク",
-                    items: [
-                        {
-                            title: "サンプルタイトル",
-                            body: "サンプル",
-                            progress: 30,
-                            type:1,
-                        }
-                    ]
-                },
-                {
-                    kanban_type: 2,
-                    kanban_name: "進行中",
-                    items: []
-                },
-                {
-                    kanban_type: 3,
-                    kanban_name: "確認中",
-                    items: []
-                },
-                {
-                    kanban_type: 4,
-                    kanban_name: "完了",
-                    items: []
-                }
-            ],
+            kanbans: [],
             dialog: false,
             cardItem: {
                 title: "",
@@ -52,6 +25,10 @@ export default {
         };
     },
 
+    created() {
+        this.init();
+    },
+
     computed: {
         taskCount: function() {
             return function(index) {
@@ -61,6 +38,12 @@ export default {
     },
 
     methods: {
+        init: async function () {
+            // TODO 担当者の追加
+            // TODO 進捗率の追加
+            const res = await $WebAPI.postAxios("/api/kanban_index",{});
+            this.kanbans = res.data;
+        },
         openDialog() {
             this.cardItem = {};
             this.dialog = !this.dialog;
@@ -79,13 +62,14 @@ export default {
                 let items = kanban.items;
                 let type = kanban.kanban_type;
                 let arr2 = items.map(item => {
-                    item.type = type;
+                    item.status = type;
                     return item;
                 });
                 kanban.items = arr2;
                 return kanban;
             });
             this.kanbans = arr;
+            // TODO ステータスの更新処理
         },
     }
 };

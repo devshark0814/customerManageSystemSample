@@ -63,4 +63,15 @@ class TCustomerRepository implements TCustomerRepositoryInterface
         $data = TCustomer::find($obj->id);
         return $data->delete();
     }
+
+    /**
+     * ステータスに該当するデータを取得
+     *
+     * @param mixed $statusCd 
+     * @return void
+     */
+    public function getByStatus($statusCd)
+    {
+        return $this->tCustomer::where('status', $statusCd)->get();
+    }
 }
