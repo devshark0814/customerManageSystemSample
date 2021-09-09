@@ -2,49 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Const\MessageConst;
 
+use App\Repositories\TCustomer\TCustomerRepositoryInterface;
 class TCustomerController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * construct
      *
-     * @return \Illuminate\Http\Response
+     * @param TCustomerRepositoryInterface $repository 
+     */
+    public function __construct(TCustomerRepositoryInterface $repository)
+    {
+        $this->repo = $repository;
+    }
+
+    /**
+     * 一覧用に全データを取得
+     *
+     * @return void
      */
     public function index()
     {
-        $datas = TCustomer::all();
+        $datas = $this->repo->getAll();
         return $this->setResponse(MessageConst::MESSAGE_ID_00001, $datas);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 顧客情報登録
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request 
+     * @return void
      */
     public function store(Request $request)
     {
-        TCustomer::create($request->all());
-        return response()->json([
-            'message' => MessageConst::MESSAGE_ID_00002
-        ]);
+        $this->repo->store($request->all());
+        return $this->setResponse(MessageConst::MESSAGE_ID_00002);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 顧客情報更新
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TCustomer  $tCustomer
-     * @return \Illuminate\Http\Response
+     * @param Request $request 
+     * @param TCustomer $tCustomer 
+     * @return void
      */
-    public function update(Request $request, TCustomer $tCustomer)
+    public function update(Request $request)
     {
-        $data = TCustomer::find($request->id);
-        $result = $data->fill($request->all())->save();
+        $result = $this->repo->update($request);
         if(!$result) {
             return $this->setResponse(MessageConst::MESSAGE_ID_00005);
         }
@@ -52,15 +60,14 @@ class TCustomerController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 顧客情報削除
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request 
+     * @return void
      */
     public function destroy(Request $request)
     {
-        $data = TCustomer::find($request->id);
-        $result = $data->delete();
+        $result = $this->repo->delete($request);
         if(!$result) {
             return $this->setResponse(MessageConst::MESSAGE_ID_00007);
         }
