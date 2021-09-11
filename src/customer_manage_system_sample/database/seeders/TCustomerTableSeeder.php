@@ -24,7 +24,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'takasi1976@web.ad.jp',
                 'post_code'=>'1970825',
                 'address'=>'東京都あきる野市雨間3-5-5-4F',
-                'address_kana'=>'トウキョウトアキルノシアメマ','status' => 1
+                'address_kana'=>'トウキョウトアキルノシアメマ'
             ],
             [
                 'customer_name'=>'堀口 繁造',
@@ -36,7 +36,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'horiguti.sigezou@eaccess.net',
                 'post_code'=>'5731165',
                 'address'=>'大阪府枚方市都丘町5-12-1',
-                'address_kana'=>'オオサカフヒラカタシミヤコガオカチョウ','status' => 1
+                'address_kana'=>'オオサカフヒラカタシミヤコガオカチョウ'
             ],
             [
                 'customer_name'=>'岡 三光',
@@ -48,7 +48,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'oka.mituteru@asp.home.ne.jp',
                 'post_code'=>'3360973',
                 'address'=>'埼玉県さいたま市緑区南部領辻1-10-7',
-                'address_kana'=>'サイタマケンサイタマシミドリクナンブリョウツジ','status' => 1
+                'address_kana'=>'サイタマケンサイタマシミドリクナンブリョウツジ'
             ],
             [
                 'customer_name'=>'浜野 益三',
@@ -60,7 +60,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'test@example.com',
                 'post_code'=>'4470856',
                 'address'=>'愛知県碧南市宮後町3-8-7',
-                'address_kana'=>'アイチケンヘキナンシミヤゴマチ','status' => 1
+                'address_kana'=>'アイチケンヘキナンシミヤゴマチ'
             ],
             [
                 'customer_name'=>'須藤 準一郎',
@@ -72,7 +72,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'sutou_junitirou@ocn.ne.jp',
                 'post_code'=>'6401244',
                 'address'=>'和歌山県海草郡紀美野町福田2202',
-                'address_kana'=>'ワカヤマケンカイソウグンキミノチョウフクダ','status' => 1
+                'address_kana'=>'ワカヤマケンカイソウグンキミノチョウフクダ'
             ],
             [
                 'customer_name'=>'大木 貫之',
@@ -84,7 +84,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'kanzi078@tcom.ne.jp',
                 'post_code'=>'0788273',
                 'address'=>'北海道旭川市工業団地三条5-12-4',
-                'address_kana'=>'ホッカイドウアサヒカワシコウギョウダンチ３ジョウ','status' => 1
+                'address_kana'=>'ホッカイドウアサヒカワシコウギョウダンチ３ジョウ'
             ],
             [
                 'customer_name'=>'小谷 れいや',
@@ -96,7 +96,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'ktn_riy@dti.ne.jp',
                 'post_code'=>'1350016',
                 'address'=>'東京都江東区東陽7-1-7 メゾン東陽 603号室',
-                'address_kana'=>'トウキョウトコウトウクトウヨウ','status' => 1
+                'address_kana'=>'トウキョウトコウトウクトウヨウ'
             ],
             [
                 'customer_name'=>'小松 貞郎',
@@ -108,7 +108,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'komatu91@infoseek.co.jp',
                 'post_code'=>'9600648',
                 'address'=>'福島県伊達市保原町東小蓋9-7-9',
-                'address_kana'=>'フクシマケンダテシホバラマチヒガシコブタ','status' => 1
+                'address_kana'=>'フクシマケンダテシホバラマチヒガシコブタ'
             ],
             [
                 'customer_name'=>'野田 達生',
@@ -120,7 +120,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'noda.tatuo@tokyo24.com',
                 'post_code'=>'9812142',
                 'address'=>'宮城県伊具郡丸森町飯泉8-4-3',
-                'address_kana'=>'ミヤギケンイググンマルモリマチイイセン','status' => 1
+                'address_kana'=>'ミヤギケンイググンマルモリマチイイセン'
             ],
             [
                 'customer_name'=>'東 志奈',
@@ -132,7 +132,7 @@ class TCustomerTableSeeder extends Seeder
                 'e_mail'=>'sina9591632@tokyo24.com',
                 'post_code'=>'9591632',
                 'address'=>'新潟県五泉市中川新2-14-6 ハイツドリーム中川新 10F',
-                'address_kana'=>'ニイガタケンゴセンシナカガワシン','status' => 1
+                'address_kana'=>'ニイガタケンゴセンシナカガワシン'
             ]
         ];
         DB::table('t_customers')->insert($params);
