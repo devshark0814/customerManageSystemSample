@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function setResponse(string $msg, object $datas = null) {
+    public function setResponse(string $msg, $datas = null) {
         return response()->json([
             'message' => $msg,
             'data' => $datas

@@ -19,6 +19,7 @@ class CreateTContractsTable extends Migration
             $table->integer('employee_id')->comment('担当者ID');
             $table->string('contract_title')->comment('契約タイトル');
             $table->text('contract_desc')->comment('契約説明');
+            $table->integer('status')->comment('ステータス（1:新規 2:着手中 3:確認中 4:完了）');
             $table->integer('progress')->comment('進捗率');
             $table->timestamps();
         });

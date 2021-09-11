@@ -42,3 +42,10 @@ Route::post('/employee_index',[App\Http\Controllers\MEmployeeController::class, 
 Route::post('/employee_store',[App\Http\Controllers\MEmployeeController::class, 'store']);
 Route::post('/employee_update',[App\Http\Controllers\MEmployeeController::class, 'update']);
 Route::post('/employee_destroy',[App\Http\Controllers\MEmployeeController::class, 'destroy']);
+
+
+/*-------------------------------------
+ | 契約情報
+ |-------------------------------------
+*/
+Route::post('/contract_index',[App\Http\Controllers\TContractController::class, 'index']);

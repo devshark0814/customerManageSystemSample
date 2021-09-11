@@ -23,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\MEmployee\MEmployeeRepositoryInterface::class,
             \App\Repositories\MEmployee\MEmployeeRepository::class,
         );
+
+        $this->app->bind(
+            \App\Repositories\TContract\TContractRepositoryInterface::class,
+            \App\Repositories\TContract\TContractRepository::class,
+        );
     }
 
     /**

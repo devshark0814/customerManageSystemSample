@@ -8,7 +8,7 @@ import CustomerCreate from "./views/customerCreate/customerCreate.vue";
 import CustomerList from "./views/customerList/customerList.vue";
 import CustomerKanban from "./views/customerKanban/customerKanban.vue";
 import EmployeeList from "./views/employeeList/employeeList.vue";
-
+import ContractList from "./views/contractList/contractList.vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -37,6 +37,11 @@ const router = new VueRouter({
             path: "/employeeList",
             name: "EmployeeList",
             component: EmployeeList,
+        },
+        {
+            path: "/contractList",
+            name: "ContractList",
+            component: ContractList,
         },
     ]
 });
