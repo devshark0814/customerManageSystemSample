@@ -39,3 +39,6 @@ Route::post('/kanban_index',[App\Http\Controllers\KanbanController::class, 'inde
  |-------------------------------------
 */
 Route::post('/employee_index',[App\Http\Controllers\MEmployeeController::class, 'index']);
+Route::post('/employee_store',[App\Http\Controllers\MEmployeeController::class, 'store']);
+Route::post('/employee_update',[App\Http\Controllers\MEmployeeController::class, 'update']);
+Route::post('/employee_destroy',[App\Http\Controllers\MEmployeeController::class, 'destroy']);
