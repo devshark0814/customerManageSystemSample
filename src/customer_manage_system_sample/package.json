@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "yarn run production",
         "production": "mix --production",
-        "postinstall": "yarn run dev"
+        "heroku-postbuild": "yarn run prod"
     },
     "devDependencies": {
         "@mdi/font": "^5.9.55",
