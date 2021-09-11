@@ -24,7 +24,7 @@
                         <v-toolbar-title>My CRUD</v-toolbar-title>
                         <v-divider class="mx-4" inset vertical></v-divider>
                         <v-spacer></v-spacer>
-                        <v-dialog v-model="dialog" max-width="500px">
+                        <v-dialog v-model="dialog" max-width="800px" persistent>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
                                     color="primary"
@@ -41,8 +41,97 @@
                                     <span class="text-h5">{{ formTitle }}</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    <v-text-field v-model="editedItem.employee_name" label="従業員名"/>
-                                    <v-text-field v-model="editedItem.employee_img_path" label="画像パス"/>
+                                    <v-simple-table>
+                                        <template v-slot:default>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="table_header">契約ID</th>
+                                                    <td>
+                                                        <span>{{ editedItem.contract_id }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">契約顧客</th>
+                                                    <td>
+                                                        <v-select
+                                                            v-model="editedItem.customer_id"
+                                                            :items="cusList"
+                                                            item-text="customer_name"
+                                                            item-value="id"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">担当者</th>
+                                                    <td>
+                                                        <v-select
+                                                            v-model="editedItem.employee_id"
+                                                            :items="empList"
+                                                            item-text="employee_name"
+                                                            item-value="id"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">契約タイトル</th>
+                                                    <td>
+                                                        <v-text-field
+                                                            class="table_object"
+                                                            v-model="editedItem.contract_title"
+                                                            outlined
+                                                            clearable
+                                                            dense
+                                                            counter="50"
+                                                        ></v-text-field>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">契約内容</th>
+                                                    <td>
+                                                        <v-textarea
+                                                            class="table_object"
+                                                            v-model="editedItem.contract_desc"
+                                                            solo
+                                                            dense
+                                                            auto-grow
+                                                        ></v-textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">ステータス</th>
+                                                    <td>
+                                                        <v-select
+                                                            v-model="editedItem.status"
+                                                            :items="statusList"
+                                                            item-text="status_name"
+                                                            item-value="status_code"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">進捗率</th>
+                                                    <td>
+                                                        <v-text-field
+                                                            class="table_object"
+                                                            v-model="editedItem.progress"
+                                                            outlined
+                                                            clearable
+                                                            dense
+                                                            counter="2"
+                                                            type="number"
+                                                        />
+                                                        <v-progress-linear
+                                                            v-model="editedItem.progress"
+                                                            :color="primary"
+                                                            striped
+                                                            disabled
+                                                        >
+                                                        </v-progress-linear>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer />

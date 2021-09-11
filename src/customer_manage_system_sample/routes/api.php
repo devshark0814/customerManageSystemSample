@@ -49,3 +49,6 @@ Route::post('/employee_destroy',[App\Http\Controllers\MEmployeeController::class
  |-------------------------------------
 */
 Route::post('/contract_index',[App\Http\Controllers\TContractController::class, 'index']);
+Route::post('/contract_store',[App\Http\Controllers\TContractController::class, 'store']);
+Route::post('/contract_update',[App\Http\Controllers\TContractController::class, 'update']);
+Route::post('/contract_destroy',[App\Http\Controllers\TContractController::class, 'destroy']);

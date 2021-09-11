@@ -6,10 +6,25 @@ export default {
             loading: false,
             search: "",
             headers: [
-                { text: "従業員ID", value: "id", class: "data_table_header" },
+                { text: "契約ID", value: "contract_id", class: "data_table_header" },
                 {
-                    text: "従業員名",
-                    value: "employee_name",
+                    text: "契約タイトル",
+                    value: "contract_title",
+                    class: "data_table_header"
+                },
+                {
+                    text: "ステータス",
+                    value: "status_name",
+                    class: "data_table_header"
+                },
+                {
+                    text: "作成日",
+                    value: "created_at",
+                    class: "data_table_header"
+                },
+                {
+                    text: "更新日",
+                    value: "updated_at",
                     class: "data_table_header"
                 },
                 {
@@ -25,9 +40,23 @@ export default {
 
             editedIndex: -1,
             editedItem: {
-                employee_name: "",
-                employee_img_path: ""
-            }
+                contract_id: 0,
+                customer_id: 0,
+                employee_id: 0,
+                contract_title: "",
+                contract_desc: "",
+                status: 1,
+                progress: 0,
+            },
+
+            empList: [],
+            cusList: [],
+            statusList: [
+                { status_code: 1, status_name: "新規" },
+                { status_code: 2, status_name: "着手中" },
+                { status_code: 3, status_name: "確認中" },
+                { status_code: 4, status_name: "完了" },
+            ],
         };
     },
 
@@ -52,12 +81,21 @@ export default {
     methods: {
         init() {
             this.searchList();
+            this.searchPulldown();
         },
+        // 一覧検索
         searchList: async function() {
             this.loading = true;
-            const res = await $WebAPI.postAxios("/api/employee_index", {});
+            const res = await $WebAPI.postAxios("/api/contract_index", {});
             this.desserts = res.data.data;
             this.loading = false;
+        },
+        // プルダウン表示用検索
+        searchPulldown: async function() {
+            const emp = await $WebAPI.postAxios("/api/employee_index", {});
+            this.empList = emp.data.data;
+            const cus = await $WebAPI.postAxios("/api/customer_index", {});
+            this.cusList = cus.data.data;
         },
         close() {
             this.dialog = false;
@@ -74,19 +112,20 @@ export default {
             });
         },
         save: async function() {
-            if('id' in this.editedItem) {
+            console.log(this.editedItem);
+            if(this.editedItem.contract_id != 0) {
                 // 更新
-                const res = await $WebAPI.postAxios("/api/employee_update", this.editedItem);
+                const res = await $WebAPI.postAxios("/api/contract_update", this.editedItem);
             }else {
                 // 登録
-                const res = await $WebAPI.postAxios("/api/employee_store", this.editedItem);
+                const res = await $WebAPI.postAxios("/api/contract_store", this.editedItem);
             }
             this.close();
             this.searchList();
         },
         deleteItemConfirm: async function() {
             // this.desserts.splice(this.editedIndex, 1);
-            const res = await $WebAPI.postAxios("/api/employee_destroy", this.editedItem);
+            const res = await $WebAPI.postAxios("/api/contract_destroy", this.editedItem);
             this.closeDelete();
             this.searchList();
         },
