@@ -1,33 +1,12 @@
 <template>
     <v-card class="mx-auto navimenu" width="300" height="100%">
         <v-list>
-            <v-list-item @click="clickHome">
+            <v-list-item v-for="(menu, index) in menuList" :key="index" :to="menu.route">
                 <v-list-item-icon>
-                    <v-icon>mdi-home</v-icon>
+                    <v-icon>{{ menu.icon }}</v-icon>
                 </v-list-item-icon>
 
-                <v-list-item-title>Home</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="clickCustomerCreate">
-                <v-list-item-icon>
-                    <v-icon>mdi-account-plus</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-title>顧客登録</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="clickCustomerIndex">
-                <v-list-item-icon>
-                    <v-icon>mdi-view-list</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-title>顧客一覧</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="clickCustomerKanban">
-                <v-list-item-icon>
-                    <v-icon>mdi-view-list</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-title>顧客かんばん</v-list-item-title>
+                <v-list-item-title>{{ menu.name }}</v-list-item-title>
             </v-list-item>
         </v-list>
     </v-card>
