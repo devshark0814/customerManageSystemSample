@@ -8,6 +8,16 @@ export default {
             headers: [
                 { text: "契約ID", value: "contract_id", class: "data_table_header" },
                 {
+                    text: "顧客名",
+                    value: "customer_name",
+                    class: "data_table_header"
+                },
+                {
+                    text: "担当者",
+                    value: "employee_name",
+                    class: "data_table_header"
+                },
+                {
                     text: "契約タイトル",
                     value: "contract_title",
                     class: "data_table_header"

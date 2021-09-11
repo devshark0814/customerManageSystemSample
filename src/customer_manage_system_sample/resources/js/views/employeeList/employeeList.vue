@@ -1,15 +1,7 @@
 <template>
     <div style="padding:1% 2%">
         <v-card>
-            <v-card-title>
-                <v-text-field
-                    v-model="search"
-                    append-icon="mdi-magnify"
-                    label="検索"
-                    single-line
-                    hide-details
-                ></v-text-field>
-            </v-card-title>
+            <v-card-title></v-card-title>
             <v-data-table
                 :headers="headers"
                 :items="desserts"
@@ -21,10 +13,18 @@
             >
                 <template v-slot:top>
                     <v-toolbar flat>
-                        <v-toolbar-title>My CRUD</v-toolbar-title>
-                        <v-divider class="mx-4" inset vertical></v-divider>
-                        <v-spacer></v-spacer>
-                        <v-dialog v-model="dialog" max-width="500px">
+                        <v-toolbar-title class="table_search_label">
+                            <v-text-field
+                                v-model="search"
+                                append-icon="mdi-magnify"
+                                label="検索"
+                                single-line
+                                hide-details
+                                clearable
+                            ></v-text-field>
+                        </v-toolbar-title>
+                        <v-spacer />
+                        <v-dialog v-model="dialog" max-width="800px" persistent>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
                                     color="primary"
@@ -38,29 +38,36 @@
                             </template>
                             <v-card>
                                 <v-card-title>
-                                    <span class="text-h5">{{ formTitle }}</span>
+                                    <span class="data_table_dialog_title">{{ formTitle }}</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    <v-text-field v-model="editedItem.employee_name" label="従業員名"/>
-                                    <v-text-field v-model="editedItem.employee_img_path" label="画像パス"/>
+                                    <v-simple-table>
+                                        <template v-slot:default>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="table_header">従業員名</th>
+                                                    <td>
+                                                        <v-text-field v-model="editedItem.employee_name" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="table_header">従業員画像</th>
+                                                    <td>
+                                                        <v-text-field v-model="editedItem.employee_img_path" label="画像パス"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer />
-                                    <v-btn
-                                        color="blue darken-1"
-                                        text
-                                        @click="close"
-                                    >
+                                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="close">
                                         閉じる
                                     </v-btn>
-                                    <v-btn
-                                        color="blue darken-1"
-                                        text
-                                        @click="save"
-                                    >
+                                    <v-btn style="width:20%" class="white--text" color="#24a974" @click="save">
                                         保存
                                     </v-btn>
-                                    <v-spacer />
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -69,31 +76,22 @@
                                 <v-card-title class="text-h5">本当に削除しても良いですか？</v-card-title>
                                 <v-card-actions>
                                     <v-spacer />
-                                    <v-btn
-                                        color="blue darken-1"
-                                        text
-                                        @click="closeDelete"
-                                    >
+                                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="closeDelete">
                                         閉じる
                                     </v-btn>
-                                    <v-btn
-                                        color="blue darken-1"
-                                        text
-                                        @click="deleteItemConfirm"
-                                    >
+                                    <v-btn style="width:20%" class="white--text" color="pink lighten-1" @click="deleteItemConfirm">
                                         削除
                                     </v-btn>
-                                    <v-spacer />
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
                     </v-toolbar>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon small class="mr-2" @click="editItem(item)">
+                    <v-icon class="mr-2" @click="editItem(item)">
                         mdi-pencil
                     </v-icon>
-                    <v-icon small @click="deleteItem(item)">
+                    <v-icon @click="deleteItem(item)">
                         mdi-delete
                     </v-icon>
                 </template>

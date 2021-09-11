@@ -17,7 +17,7 @@
         </v-card>
         <v-dialog v-model="dialog" max-width="800px">
             <v-card>
-                <v-card-title>内容確認</v-card-title>
+                <v-card-title><span class="data_table_dialog_title">内容確認</span></v-card-title>
                 <v-card-text>
                     <v-simple-table>
                         <template v-slot:default>
@@ -112,8 +112,8 @@
                     </v-simple-table>
                 </v-card-text>
                 <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="dialog = false">
+                    <v-spacer />
+                    <v-btn style="width:20%" class="white--text" color="blue-grey" @click="dialog = false">
                         閉じる
                     </v-btn>
                 </v-card-actions>

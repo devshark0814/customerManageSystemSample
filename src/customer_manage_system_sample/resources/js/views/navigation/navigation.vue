@@ -7,7 +7,7 @@
         <!-- <v-app-bar app>
         </v-app-bar> -->
 
-        <v-main>
+        <v-main style="background-color: #f7f7f7;">
             <router-view />
         </v-main>
 

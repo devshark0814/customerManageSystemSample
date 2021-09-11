@@ -22,6 +22,7 @@ export default {
             this.creatingFlag = true;
             this.$refs.customerDefaultInfo.getDatas();
             const res = await $WebAPI.postAxios("/api/customer_store",this.creatObj);
+            this.$refs.customerDefaultInfo.clearDatas();
             this.creatingFlag = false;
             this.snack = true;
             this.snackMessage = res.data.message;
