@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "yarn run production",
         "production": "mix --production",
-        "postinstall": "yarn run prod"
+        "postinstall": "yarn run dev"
     },
     "devDependencies": {
         "@mdi/font": "^5.9.55",
