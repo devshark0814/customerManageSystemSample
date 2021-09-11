@@ -52,3 +52,11 @@ composer create-project --prefer-dist laravel/laravel customer_manage_system_sam
 <pre>
 yarn install
 </pre>
+
+## Heroku
+
+### マイグレーション
+<pre>
+heroku login
+heroku run php artisan migrate:fresh --seed -a dev-cms1222
+</pre>
