@@ -18,6 +18,7 @@
                 loading-text="検索中…"
                 color="#24a974"
                 @click:row="clickRow"
+                :footer-props="{ 'items-per-page-options': [50, 100, 150, -1] }"
             ></v-data-table>
         </v-card>
         <v-snackbar :value="snack" absolute top right timeout=5000 color="success">

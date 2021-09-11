@@ -17,6 +17,7 @@
                 :loading="loading"
                 loading-text="検索中…"
                 color="#24a974"
+                :footer-props="{ 'items-per-page-options': [50, 100, 150, -1] }"
             >
                 <template v-slot:top>
                     <v-toolbar flat>
