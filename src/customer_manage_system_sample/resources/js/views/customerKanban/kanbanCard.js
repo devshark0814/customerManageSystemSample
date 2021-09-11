@@ -1,9 +1,10 @@
 export default {
 
     props:[
-        "card_type",
-        "card_title",
-        "card_body",
+        "card_status",
+        "card_contract_title",
+        "card_customer_name",
+        "card_employee_name",
         "card_progress",
     ],
 
@@ -15,16 +16,16 @@ export default {
 
     computed : {
         card_class: function() {
-            if(this.card_type == 1) return "task_card_header_color_todo";
-            if(this.card_type == 2) return "task_card_header_color_doing";
-            if(this.card_type == 3) return "task_card_header_color_review";
-            if(this.card_type == 4) return "task_card_header_color_done";
+            if(this.card_status == 1) return "task_card_header_color_todo";
+            if(this.card_status == 2) return "task_card_header_color_doing";
+            if(this.card_status == 3) return "task_card_header_color_review";
+            if(this.card_status == 4) return "task_card_header_color_done";
         },
         typeColor: function() {
-            if(this.card_type == 1) return "#D84315";
-            if(this.card_type == 2) return "#EF6C00";
-            if(this.card_type == 3) return "#1565C0";
-            if(this.card_type == 4) return "#66A638";
+            if(this.card_status == 1) return "#D84315";
+            if(this.card_status == 2) return "#EF6C00";
+            if(this.card_status == 3) return "#1565C0";
+            if(this.card_status == 4) return "#66A638";
         }
     },
 

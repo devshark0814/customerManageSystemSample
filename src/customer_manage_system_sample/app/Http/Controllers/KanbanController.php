@@ -6,31 +6,37 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Const\MessageConst;
 
-use App\Repositories\TCustomer\TCustomerRepositoryInterface;
+use App\Repositories\TContract\TContractRepositoryInterface;
 class KanbanController extends Controller
 {
+
+    private $repo;
 
     /**
      * construct
      *
-     * @param TCustomerRepositoryInterface $repository 
+     * @param TContractRepositoryInterface $repository 
      */
-    public function __construct(TCustomerRepositoryInterface $repository)
+    public function __construct(TContractRepositoryInterface $repository)
     {
         $this->repo = $repository;
     }
 
     public function index()
     {
-        $kanbanTypeArr = array(1,2,3,4);
-        $kanbanNameArr = array("新規","進行中","対応中","完了");
         $res = array();
+        
+        $_datas = $this->repo->getAll();
+        Log::info($_datas);
 
+        $kanbanTypeArr = array(1,2,3,4);
+        $kanbanNameArr = array("新規","着手中","確認中","完了");
         $index = 0;
+
         foreach ($kanbanTypeArr as $key => $kanbanType) {
             $kanbanType = $kanbanTypeArr[$index];
             $kanbanName = $kanbanNameArr[$index];
-            $datas = $this->repo->getByStatus($kanbanType);
+            $datas = collect($_datas)->where('status', $kanbanType)->values()->toArray();
             $datas = count($datas) == 0 ? array() : $datas;
             $resArr = array(
                 "kanban_type" => $kanbanType,
@@ -40,6 +46,7 @@ class KanbanController extends Controller
             array_push($res, $resArr);
             $index++;
         }
+
         return $res;
     }
 }

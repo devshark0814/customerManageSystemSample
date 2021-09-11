@@ -48,6 +48,15 @@ export default {
                 status: 1,
                 progress: 0,
             },
+            defaultItem: {
+                contract_id: 0,
+                customer_id: 0,
+                employee_id: 0,
+                contract_title: "",
+                contract_desc: "",
+                status: 1,
+                progress: 0,
+            },
 
             empList: [],
             cusList: [],

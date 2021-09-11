@@ -39,24 +39,10 @@ export default {
 
     methods: {
         init: async function () {
-            // TODO 担当者の追加
-            // TODO 進捗率の追加
             const res = await $WebAPI.postAxios("/api/kanban_index",{});
             this.kanbans = res.data;
         },
-        openDialog() {
-            this.cardItem = {};
-            this.dialog = !this.dialog;
-        },
-        clickAddItem() {
-            let obj = {
-                title: this.title,
-                body: this.body,
-                progress: this.progress,
-                type:1
-            }
-            this.kanbans[0].items.push(obj);
-        },
+        // drop時
         onEnd(event) {
             let arr = this.kanbans.map(kanban => {
                 let items = kanban.items;

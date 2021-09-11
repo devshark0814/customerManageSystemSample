@@ -1,11 +1,10 @@
 <template>
     <div>
         <v-card class="task_card_header" v-bind:class="card_class" @click="clickCard">
-            <!-- TODO 内容の更新 -->
-            <!-- TODO 担当者の追加 -->
             <v-card-text>
-                <div class="task_title">顧客名: {{ card_title }}</div>
-                <div class="task_body">住所: {{ card_body }}</div>
+                <div class="task_title">契約名: {{ card_contract_title }}</div>
+                <div class="task_body">顧客名: {{ card_customer_name }}</div>
+                <div class="task_body">担当名: {{ card_employee_name }}</div>
                 <div>
                     <v-progress-linear
                         v-model="card_progress"
@@ -26,12 +25,12 @@
                     <v-container>
                         <v-row>
                             <v-col>
-                                <v-text-field v-model="card_title" label="タスクタイトル" />
+                                <v-text-field v-model="card_contract_title" label="タスクタイトル" />
                             </v-col>
                         </v-row>
                         <v-row>
                             <v-col>
-                                <v-text-field v-model="card_body" label="タスク詳細" />
+                                <v-text-field v-model="card_customer_name" label="タスク詳細" />
                             </v-col>
                         </v-row>
                         <v-row>
