@@ -18,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\TCustomer\TCustomerRepositoryInterface::class,
             \App\Repositories\TCustomer\TCustomerRepository::class,
         );
+
+        $this->app->bind(
+            \App\Repositories\MEmployee\MEmployeeRepositoryInterface::class,
+            \App\Repositories\MEmployee\MEmployeeRepository::class,
+        );
     }
 
     /**

@@ -7,6 +7,7 @@ import Dashboard from "./views/dashboard/dashboard.vue";
 import CustomerCreate from "./views/customerCreate/customerCreate.vue";
 import CustomerList from "./views/customerList/customerList.vue";
 import CustomerKanban from "./views/customerKanban/customerKanban.vue";
+import EmployeeList from "./views/employeeList/employeeList.vue";
 
 
 const router = new VueRouter({
@@ -31,6 +32,11 @@ const router = new VueRouter({
             path: "/customerKanban",
             name: "CustomerKanban",
             component: CustomerKanban,
+        },
+        {
+            path: "/employeeList",
+            name: "EmployeeList",
+            component: EmployeeList,
         },
     ]
 });

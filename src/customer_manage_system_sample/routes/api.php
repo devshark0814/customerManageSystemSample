@@ -33,3 +33,9 @@ Route::post('/customer_destroy',[App\Http\Controllers\TCustomerController::class
 */
 
 Route::post('/kanban_index',[App\Http\Controllers\KanbanController::class, 'index']);
+
+/*-------------------------------------
+ | 従業員情報
+ |-------------------------------------
+*/
+Route::post('/employee_index',[App\Http\Controllers\MEmployeeController::class, 'index']);
