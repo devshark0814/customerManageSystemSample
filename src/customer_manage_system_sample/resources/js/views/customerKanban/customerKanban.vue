@@ -17,10 +17,12 @@
                             <template v-for="(item, j) in kanban.items">
                                 <kanbancard
                                     :key="j"
+                                    :card_contract_id="item.contract_id"
                                     :card_status="item.status"
                                     :card_contract_title="item.contract_title"
                                     :card_customer_name="item.customer_name"
                                     :card_employee_name="item.employee_name"
+                                    :card_contract_desc="item.contract_desc"
                                     :card_progress="0"
                                 />
                             </template>

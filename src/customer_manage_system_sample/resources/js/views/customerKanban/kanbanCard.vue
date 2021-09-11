@@ -15,38 +15,106 @@
                 </div>
             </v-card-text>
         </v-card>
-        <!-- TODO 内容の更新 -->
-        <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-dialog v-model="dialog" max-width="800px">
             <v-card>
-                <v-card-title>
-                    <span class="text-h5">編集</span>
-                </v-card-title>
+                <v-card-title>内容確認</v-card-title>
                 <v-card-text>
-                    <v-container>
-                        <v-row>
-                            <v-col>
-                                <v-text-field v-model="card_contract_title" label="タスクタイトル" />
-                            </v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col>
-                                <v-text-field v-model="card_customer_name" label="タスク詳細" />
-                            </v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col>
-                                <v-text-field v-model="card_progress" label="タスク進捗" type="number" />
-                            </v-col>
-                        </v-row>
-                    </v-container>
+                    <v-simple-table>
+                        <template v-slot:default>
+                            <tbody>
+                                <tr>
+                                    <th class="table_header">契約ID</th>
+                                    <td>
+                                        <span>{{ card_contract_id }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">契約顧客</th>
+                                    <td>
+                                        <v-text-field
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_customer_name"
+                                            outlined
+                                            dense
+                                        ></v-text-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">担当者</th>
+                                    <td>
+                                        <v-text-field
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_employee_name"
+                                            outlined
+                                            dense
+                                        ></v-text-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">契約タイトル</th>
+                                    <td>
+                                        <v-text-field
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_contract_title"
+                                            outlined
+                                            dense
+                                        ></v-text-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">契約内容</th>
+                                    <td>
+                                        <v-textarea
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_contract_desc"
+                                            solo
+                                            dense
+                                        ></v-textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">ステータス</th>
+                                    <td>
+                                        <v-text-field
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_status"
+                                            outlined
+                                            dense
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="table_header">進捗率</th>
+                                    <td>
+                                        <v-text-field
+                                            readonly
+                                            class="table_object"
+                                            v-model="card_progress"
+                                            outlined
+                                            dense
+                                        />
+                                        <v-progress-linear
+                                            v-model="card_progress"
+                                            :color="primary"
+                                            striped
+                                            disabled
+                                        >
+                                        </v-progress-linear>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </template>
+                    </v-simple-table>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" text @click="dialog = false">
                         閉じる
-                    </v-btn>
-                    <v-btn color="blue darken-1" text @click="dialog = false">
-                        保存
                     </v-btn>
                 </v-card-actions>
             </v-card>

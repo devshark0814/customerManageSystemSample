@@ -1,10 +1,12 @@
 export default {
 
     props:[
+        "card_contract_id",
         "card_status",
         "card_contract_title",
         "card_customer_name",
         "card_employee_name",
+        "card_contract_desc",
         "card_progress",
     ],
 
