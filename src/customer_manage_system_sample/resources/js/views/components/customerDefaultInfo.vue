@@ -2,9 +2,9 @@
     <v-form>
         <v-simple-table>
             <template v-slot:default>
-                <tbody>
+                <tbody class="simple_table">
                     <tr>
-                        <th class="table_header">
+                        <th>
                             氏名
                         </th>
                         <td>
@@ -20,7 +20,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             氏名かな
                         </th>
                         <td>
@@ -36,7 +36,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             性別
                         </th>
                         <td>
@@ -59,7 +59,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             生年月日
                         </th>
                         <td>
@@ -104,7 +104,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             電話番号(home)
                         </th>
                         <td>
@@ -120,7 +120,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             電話番号(celler)
                         </th>
                         <td>
@@ -136,7 +136,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             メールアドレス
                         </th>
                         <td>
@@ -151,7 +151,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             郵便番号
                         </th>
                         <td>
@@ -167,7 +167,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             住所
                         </th>
                         <td>
@@ -182,7 +182,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_header">
+                        <th>
                             住所かな
                         </th>
                         <td>
@@ -214,7 +214,7 @@ export default {
             address: "",
             //-----------------------
             // model-----------------
-            id:0,
+            id: 0,
             customer_name: "",
             customer_name_kana: "",
             sex: "",
@@ -227,12 +227,21 @@ export default {
             //-----------------------
             // バリデーション
             valid: false,
-            rules : {
-                required: v => !!v || '必須項目です',
-                mail_regex: v => /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'メールアドレスのフォーマットが間違っています',
-                lenght_10: v => String(v.length) <=10 || '10桁以内のハイフン無しで入力してください',
-                lenght_11: v => String(v.length) <=11 || '11桁以内のハイフン無しで入力してください',
-                lenght_7: v => String(v.length) <=7 || '7桁以内のハイフン無しで入力してください',
+            rules: {
+                required: v => !!v || "必須項目です",
+                mail_regex: v =>
+                    /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                        v
+                    ) || "メールアドレスのフォーマットが間違っています",
+                lenght_10: v =>
+                    String(v.length) <= 10 ||
+                    "10桁以内のハイフン無しで入力してください",
+                lenght_11: v =>
+                    String(v.length) <= 11 ||
+                    "11桁以内のハイフン無しで入力してください",
+                lenght_7: v =>
+                    String(v.length) <= 7 ||
+                    "7桁以内のハイフン無しで入力してください"
             }
             //-----------------------
         };
@@ -242,13 +251,13 @@ export default {
             val && setTimeout(() => (this.activePicker = "YEAR"));
         },
         post_code: function(post_code) {
-            let _this = this
+            let _this = this;
             new YubinBango.Core(post_code, function(addr) {
-                _this.pref_id  = addr.region // 都道府県ID
-                _this.locality = addr.locality  // 市区町村
-                _this.street   = addr.street　  // 町域
+                _this.pref_id = addr.region; // 都道府県ID
+                _this.locality = addr.locality; // 市区町村
+                _this.street = addr.street; // 町域
                 _this.address = _this.pref_id + _this.locality + _this.street;
-            })
+            });
         }
     },
     methods: {
@@ -257,9 +266,9 @@ export default {
         },
         getDatas() {
             let param = {
-                id : this.id,
-                customer_name : this.customer_name,
-                customer_name_kana : this.customer_name_kana,
+                id: this.id,
+                customer_name: this.customer_name,
+                customer_name_kana: this.customer_name_kana,
                 sex: this.sex,
                 birthday: this.birthday,
                 tel_home: this.tel_home,
@@ -267,46 +276,83 @@ export default {
                 e_mail: this.e_mail,
                 post_code: this.post_code,
                 address: this.address,
-                address_kana : this.address_kana,
-                status : 1,
-            }
+                address_kana: this.address_kana,
+                status: 1
+            };
             this.$emit("getDatas", param);
         },
         setDatas(objs) {
             this.clearDatas();
-            this.id                 = objs.id;
-            this.customer_name      = objs.customer_name;
+            this.id = objs.id;
+            this.customer_name = objs.customer_name;
             this.customer_name_kana = objs.customer_name_kana;
-            this.sex                = objs.sex;
-            this.birthday           = objs.birthday;
-            this.tel_home           = objs.tel_home;
-            this.tel_celler         = objs.tel_celler;
-            this.e_mail             = objs.e_mail;
-            this.post_code          = objs.post_code;
-            this.address            = objs.address;
-            this.address_kana       = objs.address_kana;
-            this.status             = objs.status;
+            this.sex = objs.sex;
+            this.birthday = objs.birthday;
+            this.tel_home = objs.tel_home;
+            this.tel_celler = objs.tel_celler;
+            this.e_mail = objs.e_mail;
+            this.post_code = objs.post_code;
+            this.address = objs.address;
+            this.address_kana = objs.address_kana;
+            this.status = objs.status;
         },
         clearDatas() {
-            this.id                 = 0;
-            this.customer_name      = "";
+            this.id = 0;
+            this.customer_name = "";
             this.customer_name_kana = "";
-            this.sex                = "";
-            this.birthday           = "";
-            this.tel_home           = "";
-            this.tel_celler         = "";
-            this.e_mail             = "";
-            this.post_code          = "";
-            this.address            = "";
-            this.address_kana       = "";
-            this.status             = 1;
+            this.sex = "";
+            this.birthday = "";
+            this.tel_home = "";
+            this.tel_celler = "";
+            this.e_mail = "";
+            this.post_code = "";
+            this.address = "";
+            this.address_kana = "";
+            this.status = 1;
         }
     }
 };
-
 </script>
 <style>
-.table_header {
+.simple_table th {
+    height: 80px !important;
+    width: 300px;
+    vertical-align: middle;
+    color: #24a974;
+    font-size: 14px !important;
+    letter-spacing: 0.1em;
+    background-color: #f3fcf8;
+    border-bottom: 1px solid #20bd7e !important;
+}
+@media screen and (max-width: 640px) {
+    .last td:last-child {
+        border-bottom: solid 1px #ccc;
+        width: 100%;
+    }
+    .simple_table {
+        width: 80% !important;
+    }
+    .simple_table th {
+        display: block;
+        width: 100%;
+        height: 30px !important;
+        color: #24a974;
+        font-size: 14px !important;
+        letter-spacing: 0.1em;
+        background-color: #f3fcf8;
+        border-bottom: 1px solid #20bd7e !important;
+        padding-top: 5px !important;
+    }
+    .simple_table td {
+        display: block;
+        width: 100%;
+        border: none !important;
+        margin-bottom: 15px !important;
+        margin-top: 5px !important;
+    }
+}
+
+/* .table_header {
     height: 80px !important;
     width: 300px;
     vertical-align: middle;
@@ -318,5 +364,5 @@ export default {
 }
 .table_object {
     margin-top: 2% !important;
-}
+} */
 </style>

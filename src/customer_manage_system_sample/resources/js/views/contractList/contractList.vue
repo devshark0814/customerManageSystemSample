@@ -43,15 +43,15 @@
                                 <v-card-text>
                                     <v-simple-table>
                                         <template v-slot:default>
-                                            <tbody>
+                                            <tbody class="simple_table">
                                                 <tr>
-                                                    <th class="table_header">契約ID</th>
+                                                    <th>契約ID</th>
                                                     <td>
                                                         <span>{{ editedItem.contract_id }}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">契約顧客</th>
+                                                    <th>契約顧客</th>
                                                     <td>
                                                         <v-select
                                                             v-model="editedItem.customer_id"
@@ -62,7 +62,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">担当者</th>
+                                                    <th>担当者</th>
                                                     <td>
                                                         <v-select
                                                             v-model="editedItem.employee_id"
@@ -73,7 +73,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">契約タイトル</th>
+                                                    <th>契約タイトル</th>
                                                     <td>
                                                         <v-text-field
                                                             class="table_object"
@@ -86,7 +86,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">契約内容</th>
+                                                    <th>契約内容</th>
                                                     <td>
                                                         <v-textarea
                                                             class="table_object"
@@ -98,7 +98,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">ステータス</th>
+                                                    <th>ステータス</th>
                                                     <td>
                                                         <v-select
                                                             v-model="editedItem.status"
@@ -109,7 +109,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">進捗率</th>
+                                                    <th>進捗率</th>
                                                     <td>
                                                         <v-text-field
                                                             class="table_object"
