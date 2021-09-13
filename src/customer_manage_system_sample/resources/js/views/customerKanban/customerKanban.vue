@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-row>
+        <v-row v-if="!$vuetify.breakpoint.xs && !$vuetify.breakpoint.sm">
             <v-col cols="3" v-for="(kanban, i) in kanbans" :key="i">
                 <v-card id="parentCard" height="100%">
                     <v-card-subtitle>
@@ -29,6 +29,11 @@
                         </draggable>
                     </v-card-text>
                 </v-card>
+            </v-col>
+        </v-row>
+        <v-row v-else>
+            <v-col>
+                PCで参照してね
             </v-col>
         </v-row>
     </v-container>
