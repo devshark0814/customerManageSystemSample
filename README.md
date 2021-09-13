@@ -1,5 +1,8 @@
 # customerManageSystemSample
 
+## Heroku
+https://dev-cms1222.herokuapp.com/dashboard
+
 ## 構築方法
 
 1. ローカルにクローン
