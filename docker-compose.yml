@@ -56,26 +56,6 @@ services:
       - frontend
       - backend
 
-  pgadmin4:
-    image: dpage/pgadmin4:5.5
-    container_name: "cus_pgadmin4"
-    ports:
-      - 8000:80
-    volumes:
-      - pgadmin4_volume:/var/lib/pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: devshark0814@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: ss14ds0814
-    hostname: pgadmin4
-    links:
-      - postgres
-    restart: always
-    networks:
-      - frontend
-      - backend
-
 volumes:
   postgres_volume:
-    external: true
-  pgadmin4_volume:
     external: true

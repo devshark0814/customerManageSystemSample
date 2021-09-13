@@ -1,12 +1,36 @@
 # customerManageSystemSample
 
-## Laravelプロジェクト作成
+## 構築方法
 
+1. ローカルにクローン
+    <pre>git clone -b main https://github.com/devshark0814/customerManageSystemSample.git</pre>
+1. 各コンテナの起動（※クローンしたディレクトリで）
+    <pre>docker-compose up -d</pre>
+1. appコンテナにbash（※クローンしたディレクトリで）
+    <pre>docker-compose exec app bash</pre>
+1. bash後、appコンテナで下記コマンドを実行（※クローンしたディレクトリで）
+    <pre>cd customer_manage_system_sample</pre>
+    ↑Laravleプロジェクトルートフォルダに遷移
+    <pre>composer install</pre>
+    ↑composerでインストール
+    <pre>yarn install</pre>
+    ↑yarnでnode_modulesインストール
+1. .envファイルのDB接続情報を書き換え
+    <pre>「.env.example」のDB周りの設定を「.evn」に反映</pre>
+1. マイグレーション&初期データ投入
+    <pre>cd customer_manage_system_sample</pre>
+    <pre>php artisan migrate:fresh --seed</pre>
+1. ブラウザで下記URLにアクセス
+    <pre>http://localhost:8080/dashboard</pre>
+
+
+## 開発メモ
+### Laravelプロジェクト作成
 <pre>
 composer create-project --prefer-dist laravel/laravel customer_manage_system_sample
 </pre>
 
-## Vue周りの設定
+### Vue周りの設定
 
 <details>
 <summary>package.json</summary>
@@ -53,9 +77,9 @@ composer create-project --prefer-dist laravel/laravel customer_manage_system_sam
 yarn install
 </pre>
 
-## Heroku
+### Heroku
 
-### マイグレーション
+#### マイグレーション
 <pre>
 heroku login
 heroku run php artisan migrate:fresh --seed -a dev-cms1222
