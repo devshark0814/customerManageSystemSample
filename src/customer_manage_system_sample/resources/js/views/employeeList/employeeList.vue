@@ -43,15 +43,15 @@
                                 <v-card-text>
                                     <v-simple-table>
                                         <template v-slot:default>
-                                            <tbody>
+                                            <tbody class="simple_table">
                                                 <tr>
-                                                    <th class="table_header">従業員名</th>
+                                                    <th>従業員名</th>
                                                     <td>
                                                         <v-text-field v-model="editedItem.employee_name" />
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_header">従業員画像</th>
+                                                    <th>従業員画像</th>
                                                     <td>
                                                         <v-text-field v-model="editedItem.employee_img_path" label="画像パス"/>
                                                     </td>
